@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: docker.io/bitnami/keycloak:latest
+    restart: always
+    environment:
+      KEYCLOAK_ADMIN: admin                                           #so far even when I change password it does nto work
+      KEYCLOAK_ADMIN_PASSWORD: admin                                  #so far when I change password it does not work
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgresforkeycloak
+      DB_DATABASE: keycloak
+      DB_USER: postgres
+      DB_PASSWORD: password      
+
+    volumes:
+      - ./jolotheme:/opt/bitnami/keycloak/themes/jolotheme          ##jolotheme is the whole configfile for keycloack that is seen as a them inside keycloack
+    ports:
+      - "8080:8080"
+
+  postgresforkeycloak:
+    image: postgres:latest
+    container_name: postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: keycloak
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5433"
+    restart: always
+
+
+
+  joloweb:
+    image: nginx:1.25.5-alpine                                    #image version alpines are significantly smaller size
+    ports:
+      - "8081:80"                                             #pc(port):CONTAINER(port)
+    volumes:                                                #hard link between docker file and my computer file
+      - ./src:/usr/share/nginx/html                         #pc path: docker path
+    restart: always       
+
+
+
+
+volumes:
+  postgres_data:
+
+networks: 
+  jolonetwork:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.92.0/24"
