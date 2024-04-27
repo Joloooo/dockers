@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head class="head" >
+    <meta charset="UTF-8"> 
+    <meta name=viewport content="width=device-width, initial-scale=1.0"> <!--page looks similar on all devices-->  
+    <title>Jolocorp Survey</title>
+    <link href="survey.css" rel="stylesheet"/>      
+  </head>  
+
+
+
+  <body>
+
+    <!-- navigation bar -->
+   <nav id="navbar">  
+      <p id="portfolio_name">JoloCorp Folio</p>
+      <p id="links"><a href="/index.html">Home</a>
+      <a id="profile-link" target="_blank" href="/me/me.html">About</a>
+      <a href="/index.html#projects">Portfolio</a>    
+      <a href="/index.html#contact">Contact</a></p>      
+    </nav> 
+  
+   
+    <main>
+      <div class="pink">
+        <h1 id="title">Jolocorp survey</h1>
+        <p id="description">Assessing the ambition of the Individual</p>
+      </div> 
+
+      <form id="survey-form">
+        <fieldset >
+        <legend>Jolochoices</legend>
+          <label id="name-label">Name <input placeholder="Annalena Baerbock" required id="name" type="text"></label>
+          <label id="email-label">Email<input required id="email" placeholder="ab@gmail.com" type="email"></label> 
+      <label id="number-label">age <input required max="69" placeholder="40" min="0" id="number" type="number"></label>
+      <label>question choice
+        <select id="dropdown">
+          <option>(please select)</option>
+          <option>are you good boy?</option>
+          <option>are you naughty boy?</option>
+        </select>
+      <label id="radio">Bussiness man<input name="occupation" value="26"type="radio"></label>
+      <label id="radio">Politician<input name="occupation" id="radio" value="25" type="radio"></label>
+          <legend>income level</legend>
+          <label id="checkmate">10k<input value="1" type="checkbox"></label>
+          <label id="checkmate">20k<input value="2" type="checkbox"></label>        
+          <label id="checkmate">30k<input value="3" type="checkbox"></label>        
+          <label id="checkmate">40k<input value="4" type="checkbox"></label>  
+          <label id="checkmate">50k<input value="5" type="checkbox"></label>
+          <label>Tell us anything that you would like: <textarea placeholder="I wanna be stupid reach" rows="3" cols="50"></textarea> 
+          <label ><button id="submit">Submit</button></label>
+        </fieldset> 
+      </form> 
+    </main>
+   
+
+    <footer> 
+      <address> 
+        Jolo Corporation<br /> 
+        Content on a Webpage is licensed under Commons Attribution 4.0 International license<br /> 
+      </address>
+
+  
+  </body> 
+</html>

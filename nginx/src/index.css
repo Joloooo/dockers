@@ -1,0 +1,253 @@
+* { 
+  box-sizing: border-box; 
+  margin:0;
+  padding:0;
+  scroll-behavior:smooth;
+  overflow-x: hidden;
+  } 
+  
+  /*navigation top bar */
+  
+  #navbar{
+    position:fixed;  
+    top:0;  
+    width:100vw;
+    background-color:black;
+    display:flex; 
+    Justify-content: space-evenly;
+    Align-items: center;
+    color:white;
+    Font-weight:bold;
+    font-size:1.5em;
+    
+   
+  }
+  
+  #portfolio_name{
+    text-align:center;
+    font-size:2em;
+    }
+  
+  #navbar p a:hover{
+      background-color:white;
+      color:black;  
+      cursor: pointer;
+  
+      
+  }
+  
+  
+  #navbar #links{
+    display:grid;
+    grid-template-columns:repeat(5, minmax( min-content, max-content));
+    column-gap:0.5em;
+    Justify-content: space-between;
+  }
+  
+  #navbar p a{  
+    text-decoration: none; 
+    color:white;
+    Font-weight:bold;
+    padding:0.5em 0;
+  }
+  
+
+
+
+  
+
+
+  /*welcome section*/  
+  #welcome-section{  
+    width:100vw;
+    height:100vh;
+    display:flex;
+    Align-items: center;
+    justify-content:center;
+    color:white;    
+    font-size:3em;
+    text-align:center;
+    
+  
+  }
+  
+  #welcome-section h1{
+    background-color:rgba(0,0,0, 80%); 
+  }
+
+  .hacked_video{
+  width:100vw;
+  height:100vh;  
+  position:absolute;  
+  z-index: -1; 
+  object-fit: cover;
+
+
+  }
+
+  /*projects section*/  
+  #projects{
+    width:100vw;
+    height:100vh;
+    background-image:url(images/johnwho.png); 
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-attachment:fixed;    
+    padding-top:2vw;
+    font-size:3em;
+    text-align:center;
+    color:white;
+  }
+  
+  
+
+  #project-name{
+    background-color:rgba(0,0,0, 50%);  
+  }
+
+  #project-name a{  
+  text-decoration: none;
+  Color:white;
+  } 
+  
+  .project-tile{
+    margin:2em;
+    background-color:rgba(0,0,0, 50%); 
+  }
+  
+  #project-name a:hover {
+ 
+    color:black;  
+    cursor: pointer;
+  }
+  
+  #project-name:hover {
+    background-color:rgba(255, 255, 255, 50%); 
+    color:black;  
+  }
+  
+  
+
+
+
+  /*contacts section*/
+  #contact{
+    width:100vw;
+    height:50vh;
+    background-color:#303841;
+    font-size:2em;
+    text-align:center;
+    padding-top:2vh;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*no errors identified*/
+
+  #contact_header{
+    padding-bottom:4vh;
+  }
+  
+  #contact subsection .contact-lines{
+    display:flex;
+    justify-content:space-evenly;  
+  }
+  
+  #contact subsection div{
+    margin-top:2em;
+  }
+  
+  
+  #contact a label:hover, #contact a:hover {
+      transform: translateY(2px);
+      cursor: pointer;     
+  }
+  
+
+
+  #contact a:active{
+  transform: translateY(1px);
+  }
+  
+  #contact a, #contact label, #contact_header{
+  color:white;
+   text-decoration: none; 
+  }
+  
+    
+  
+  
+  /*footer section*/
+  footer{
+    background-color:black;
+    color:white;
+    font-size:1.5em;
+    height:15vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding-top:1vh;
+    font-weight:bold;
+    padding-left:0.5em;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (max-width: 600px) {
+    #navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #navbar p a {
+      padding: 0.5em;
+    }
+  
+    #navbar #links {
+      grid-template-columns: repeat(2, minmax(min-content, max-content));
+    }
+  
+    #welcome-section {
+      font-size: 2em;
+    }
+  
+    #projects {
+      font-size: 2em;
+    }
+  
+    #contact a label{
+      margin-right:1em;
+      display:Flex;
+      flex-direction:column;
+    }
+  
+
+    #contact {
+      font-size: 1.5em;
+    }
+  
+    footer {
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.2rem;
+      
+    }
+  }

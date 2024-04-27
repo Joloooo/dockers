@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+  <meta name=viewport content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/> 
+<meta name="description" content="add google kezwords here"/> 
+<title>Keycloak</title>  
+<link href="styles.css" rel="stylesheet"/>   
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+</head>  
+
+<body>
+
+  <body>
+    <!-- navigation bar -->
+    <nav id="navbar">  
+     <p id="portfolio_name">JoloCorp Folio</p>
+     <p id="links"><a href="/index.html">Home</a>
+     <a id="profile-link" target="_blank" href="/me/me.html">About</a>
+     <a href="/index.html#projects">Portfolio</a>    
+     <a href="/index.html#contact">Contact</a></p>      
+   </nav> 
+   <main> 
+ 
+  
+
+
+  <header id="header">
+  <nav id="nav-bar"> 
+  <img id="header-img" src = "https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/Keycloak-logo.png?raw=true" alt="Keycloack-logo">
+     <a class="nav-link" href="#Keycloak_Features">Keycloak Features</a>
+    <a class="nav-link" href="#Implementation_Components">Implementation Components</a>
+    <a class="nav-link" href="#Implementation_Steps">Implementation Steps</a>  
+  </ul> 
+</nav> 
+</header>
+
+<main> 
+
+<section class="sections" id="signup"> 
+<form id="form" method="get" action="https://www.freecodecamp.com/email-submit">
+  <div id="watch">
+    <div id="hour_stick" class="timer"></div>
+    <div id="minute_stick" class="timer"></div>
+  
+    <div id="three"  class="hour_numbers"><h2>3</h2></div> 
+    <div id="six"  class="hour_numbers"><h2>6</h2></div> 
+    <div id="nine"  class="hour_numbers"><h2>9</h2></div>  
+    <div id="twelve" class="hour_numbers"><h2>12</h2></div>
+  </div>
+
+
+<label for="email">Signup to receive our monthly newsletter</label><input id="email" placeholder="johndoe@mail.com" required id="email" name="email" type="email" >
+<input id="submit" type="Submit"></input>  
+</form> 
+</section>
+
+
+
+<section class="sections" id="Keycloak_Features">
+  <h2>Keycloak Features</h2>
+  <ol class="feat">
+    <li><strong>Free & Opensource:</strong>. Being open-source means that its source code is freely available to anyone, allowing for transparency, customization, and community-driven development. Additionally, it ensures compatibility with various extensions and integration with a wide range of technologies, making it a versatile choice for managing authentication and authorization.
+    </li>
+    <li><strong>Centralized identity and access management:</strong> This means that Keycloak provides a single platform where you can manage user identities and control access to your applications and resources from one centralized location. It streamlines the process of user authentication and authorization across your entire system.</li>
+
+<li><strong>Support for industry-standard protocols like OAuth 2.0 and OpenID Connect:</strong> Keycloak supports widely-used protocols like OAuth 2.0 and OpenID Connect, which are essential for secure authentication and authorization in modern web applications. These protocols ensure that user data is exchanged securely between different systems, enabling features like Single Sign-On (SSO) and secure API access.</li>
+
+<li><strong>Single Sign-On (SSO) capability:</strong> SSO allows users to log in once and access multiple applications without having to re-enter their credentials. With Keycloak's SSO capability, users can seamlessly move between different applications within your ecosystem without needing to log in each time, enhancing convenience and user experience.</li>
+
+<li><strong>Role-based access control:</strong>  Role-based access control (RBAC) enables you to define specific roles and permissions for different users within your system. With Keycloak, you can assign roles to users based on their responsibilities or privileges, controlling what actions they can perform and what data they can access.</li>
+
+<li><strong>User federation for seamless authentication across different systems and platforms:</strong> User federation allows you to integrate external identity providers, such as LDAP, Active Directory, or social media platforms, with Keycloak. This enables users to authenticate using their existing credentials from these external sources, providing a seamless authentication experience across different systems and platforms while maintaining centralized control and security.</li>    
+</section>
+
+<section class="sections" id="Implementation_Components">
+  <h2>Implementation Components</h2>
+  <ol>
+    <li>Nginx Web Server: First and foremost, you need to install and configure Nginx on your server. Nginx is a high-performance web server that can also act as a reverse proxy.</li>
+    <li>Database: Keycloak requires a database to store user information, configuration, and other data. You can use databases like MySQL, PostgreSQL, or H2 (embedded) with Keycloak. Make sure to set up and configure the database accordingly.</li>
+    <li>Java Runtime Environment (JRE): Keycloak is a Java application, so you'll need to have Java installed on your server to run Keycloak.</li>
+    <li>Keycloak docker image itself</li>
+    
+  </ol>
+  <img id="uml-draw" load="lazy" src="https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/keacloack-format.png?raw=true">
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="sections" id="Implementation_Steps">
+  <h2>Implementation Steps</h2>
+<div id=instructions>
+<h3>STEP 1: Create Docker-Copose file</h3>
+<pre><code>
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+    restart: always
+  
+  keycloak:
+    image: bitnami/keycloak:latest
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    restart: always
+
+  backend:
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: mydatabase
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+</code></pre>
+</div>
+
+<img id="docker-compose-image" src="https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/docker-compose.png?raw=true">
+<img id="nginx_image" src="https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/nginx.png?raw=true">
+<img id="postgresql-image" src="https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/Postgresql.png?raw=true">
+
+
+<img id="keycloack-image" src="https://github.com/Joloooo/Joloooo.github.io/blob/main/keycloack/keycloack.png?raw=true">
+</section>
+
+<section>
+<h3>STEP 2: Keycloack Setup</h3>
+    <ol>
+        <li><strong>Create a Realm:</strong></li>
+        <p>A realm in Keycloak is a container for users, credentials, and applications. It's recommended to create a separate realm for your application to isolate its users and settings.</p>
+        <ul>
+            <li>Log in to the Keycloak admin console.</li>
+            <li>Click on the dropdown next to the realm name (usually "Master") in the top-left corner, then click "Add realm".</li>
+            <li>Enter a name for your realm (e.g., "myrealm") and click "Create".</li>
+        </ul>
+        
+        <li><strong>Create a Client:</strong></li>
+        <p>A client represents an application that you want to secure with Keycloak. In this case, we'll create a client for your Node.js backend.</p>
+        <ul>
+            <li>In your realm, click on "Clients" in the left-hand menu, then click "Create".</li>
+            <li>Enter a name for your client (e.g., "backend").</li>
+            <li>Set "Client ID" to <code>backend</code>.</li>
+            <li>Set "Access Type" to <code>confidential</code>.</li>
+            <li>Click "Save".</li>
+        </ul>
+        
+        <li><strong>Configure Client Settings:</strong></li>
+        <p>After creating the client, you'll need to configure some settings to allow communication between your Node.js backend and Keycloak.</p>
+        <ul>
+            <li>Set the "Valid Redirect URIs" to <code>http://localhost:3000/*</code>. This tells Keycloak where to redirect the user after authentication.</li>
+            <li>Set the "Web Origins" to <code>+</code> to allow requests from any origin.</li>
+            <li>Click "Save".</li>
+        </ul>
+        
+        <li><strong>Create a Role (Optional):</strong></li>
+        <p>Roles allow you to define fine-grained access control within your application. You can create roles to represent different levels of access or permissions.</p>
+        <ul>
+            <li>In the Keycloak admin console, go to your realm, then click on "Roles" in the left-hand menu, and click "Add Role".</li>
+            <li>Enter a name for your role (e.g., "user").</li>
+            <li>Click "Save".</li>
+        </ul>
+        
+        <li><strong>Create a User:</strong></li>
+        <p>Users represent individuals who can log in to your application. You'll need to create at least one user to test the authentication and authorization process.</p>
+        <ul>
+            <li>In the Keycloak admin console, go to your realm, then click on "Users" in the left-hand menu, and click "Add user".</li>
+            <li>Enter the user details and set a password.</li>
+            <li>After creating the user, you may assign roles to the user if needed.</li>
+        </ul>
+    </ol>
+</section>
+
+<div id="youtube_link">
+<h1>For more questions See the video<h1>
+<iframe id="video" src="https://www.youtube.com/embed/zyqWpFUPTnE" ></iframe>
+
+</div>
+
+
+
+
+
+
+<footer> 
+  <address> 
+  Jolo Corporation<br /> 
+  Content on a Webpage is licensed under Commons Attribution 4.0 International license<br /> 
+  </address>  
+  </footer> 
+</main> 
+</body> 
+</html>

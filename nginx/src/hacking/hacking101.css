@@ -1,0 +1,270 @@
+* { 
+  box-sizing: border-box; 
+  padding:0;
+  margin:0;
+  overflow-wrap: break-word;  
+  } 
+  
+  
+
+
+
+  /*website main header*/
+  
+ 
+
+  #navbar{
+    position:fixed;  
+    top:0;
+    left:0;
+    height:10vh;  
+    width:100vw;
+    background-color:black;
+    display:flex; 
+    Justify-content: space-evenly;
+    Align-items: center;
+    color:white;
+    Font-weight:bold;
+    font-size:4vh;
+   
+  }
+  
+  #portfolio_name{
+    text-align:center;
+    font-size:7vh;
+    }
+  
+  #navbar p a:hover{
+      background-color:white;
+      color:black;  
+      cursor: pointer;
+  
+      
+  }
+  
+  
+  #navbar #links{
+    display:grid;
+    grid-template-columns:repeat(5, minmax( min-content, max-content));
+    column-gap:0.5em;
+    Justify-content: space-between;
+  }
+  
+  #navbar p a{  
+    text-decoration: none; 
+    color:white;
+    Font-weight:bold;
+    padding:0.5em 0;
+  }
+
+/*website main header*/
+
+
+  
+  header:not(.basiani){
+  background: rgba(0, 0, 128, 0.4);
+  color:white;
+  font-size:1.8em;
+  padding:-4vw;
+  margin:0;
+  margin-top:2em;
+  text-align :center;
+  
+  }
+  
+  .basiani{
+  background: rgba(0, 0, 128, 0.4);
+  color:white;
+  font-size:1.8em;
+  padding:-4vw;
+  margin:0;
+  text-align :center;
+  margin-bottom:20px;
+  }
+  
+  table{
+    margin: 20px 0;
+  }
+  
+  table, th, td {
+    border: 2px solid black;
+    border-collapse:collapse;
+  }
+  
+  
+  #hacking_navbar{
+    position:fixed;
+    max-width:250px;
+    width:30vw;
+    left:0;
+    top:10vh;
+    
+    background:rgba(255, 255, 255, 0.4);
+    height:140vh;
+    border-right:5px solid black;
+    
+    
+  }
+  
+  
+  #hacking_navbar li{
+    max-width:100%;
+    font-size:1.5em;
+    padding-top:2em;
+    border-bottom:4px solid silver;
+    z-index:99;
+    Opacity:1;  
+  }
+  
+
+  #hacking_navbar li:hover{
+    background-color:black;     
+    cursor: pointer;
+
+  }
+
+
+  #hacking_navbar li:hover a{    
+    color:white;  
+    
+
+  }
+
+
+  #hacking_navbar li a {
+  color:black;
+  text-decoration: none;
+  }
+  
+/*website official navbar ends*/
+
+
+  section>ul, ol, section>ol, ol>li, section>ul>li{
+    padding-left:20
+  
+  }
+  
+  h1,h2,h3,h4,h5,h6{
+    padding-bottom:10px;
+    text-align :center;
+  }
+  
+  ol{
+    padding-top:20px;
+  }
+  
+  
+  
+  
+  
+  h1 {
+    background:rgba(0, 0, 0, 0.8);
+    color:white;
+    font-size:xx-large;
+  
+  }
+  
+  
+  
+  
+  body{
+  padding-left:20vw;
+  max-width:99%;
+  background-image: url('https://github.com/Joloooo/Joloooo.github.io/blob/main/images/square_color_change_blue.png?raw=true');
+  background-repeat: no-repeat;
+  background-size: cover; /* Adjust as needed */
+  background-position: center center; /* Adjust as needed */
+  background-attachment: fixed;
+  margin-right:0;
+  padding-right:0;
+  }
+  
+  
+  
+  Footer{
+  position:absolute;
+  left: 0;
+  right:0vw;
+  background-color:black;
+  color:white;
+  font-size:1.5em;
+  margin-top:25px;
+  padding-top:1vh;
+    height:10vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;    
+    font-weight:bold;
+    padding-left:0.5em;
+  }
+  
+  
+  
+  
+  @media (min-width: 0px) and (max-width: 625px){
+  
+  *{
+    font-size:0.9rem;
+  }
+     
+     body{
+       margin-left: 2.5rem;
+       margin-right: 2.5em;
+       
+       
+     }
+     #hacking_navbar{
+       width:5rem;
+       font-size:0.6rem;
+       overflow-wrap: break-word;
+       padding-left: 10px;
+       
+     }
+  }
+
+  @media (min-width: 625px) and (max-width: 800px){
+  
+    *{
+      font-size:0.9rem;
+    }
+       
+       body{
+         margin-left: 2.5rem;
+         margin-right: 2.5em;
+         
+         
+       }
+       #hacking_navbar{
+         width:5rem;
+         font-size:0.6rem;
+         overflow-wrap: break-word;
+         padding-left: 10px;
+         
+       }
+    }
+
+
+    @media (min-width: 625px) and (max-width: 1300px){
+  
+      *{
+        font-size:0.9rem;
+      }
+         
+         body{
+           margin-left: 2.5rem;
+           margin-right: 2.5em;
+           
+           
+         }
+         #hacking_navbar, #hacking_navbar li a{
+           width:20%;
+           font-size:1rem;
+           overflow-wrap: break-word;
+           padding-left: 10px;
+           padding-top:0;
+
+
+           
+         }
+      }

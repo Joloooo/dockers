@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgresjolo:
+    image: postgres:16.2-alpine3.19                        #image version alpines are significantly smaller size
+    restart: on-failure                                    #only restarts if container fails. restart: always  ##will always restat & is used for nginx.
+    environment:                                           #these variables are located in dockerhub. open  image &  scroll to how to extend image
+      POSTGRES_PASSWORD: jolobolo
+      POSTGRES_USER: jolokhava
+      POSTGRES_DB: jolotest
+      PGDATA: /var/lib/postgresql/data
+    volumes:                                                #hard link between docker file and my computer file
+      -./home/docker3/postgressbackup:/var/lib/postgresql/data:rw     #first is pc path second is docker path
+    ports:
+      -"5432:5432"                                          #first is pc port second is inside docker port
+
+
+
+  loginjolo:
+    image: docker.io/bitnami/keycloak:latest                               #image version alpines are significantly smaller size
+    restart: always                                    #only restarts if container fails. restart: always  ##will always restat & is used for nginx.
+    environment:                                           #these variables are located in dockerhub. open  image &  scroll to how to extend image
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:                                                #hard link between docker file and my computer file
+      - /home/jolo/Dockers/keycloack:/opt/bitnami/keycloak/themes/mynewtheme     #first is pc path second is docker path
+    ports:
+      - "8080:80"                                           #HOST(port):CONTAINER(port)
+
+
+
+ #This is complately separate from individual containers and only creates network creating the network
+networks: 
+  jolonetwork:                                              #stands for network name
+    ipam:                                                    ##stands for ip adress management
+      driver: default                                       #this is network type of bridge
+      config:
+        - subnet: "192.168.92.0/24"
+

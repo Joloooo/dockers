@@ -1,0 +1,357 @@
+<!DOCTYPE html>  
+<html lang="en"> 
+
+<head>  
+<meta name=viewport content="width=device-width, initial-scale=1.0"/> 
+<meta charset="UTF-8"/> 
+<meta name="description" content="Hacking stuff"/> 
+<title>CatPhotoApp</title>
+<link href="hacking101.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet"/> 
+</head>  
+
+
+
+<body>
+   <!-- navigation bar -->
+   <nav id="navbar">  
+    <p id="portfolio_name">JoloCorp Folio</p>
+    <p id="links"><a href="/index.html">Home</a>
+    <a id="profile-link" target="_blank" href="/me/me.html">About</a>
+    <a href="/index.html#projects">Portfolio</a>    
+    <a href="/index.html#contact">Contact</a></p>      
+  </nav> 
+  <main> 
+
+ 
+
+<main id="main-doc"> 
+
+  <nav id="hacking_navbar">
+    <header class="basiani">Table of Contents</header> 
+    <ul> 
+      <li><a class="nav-link" href="#Nmap">Nmap</a></li> 
+      <li><a class="nav-link" href="#Metasploit">Metasploit</a></li>
+      <li><a class="nav-link" href="#Denial_of_Service_Attack">Denial of Service Attack</a></li>
+      <li><a class="nav-link" href="#Wireless_Security">Wireless Security</a></li>
+      <li><a class="nav-link" href="#Vulnerabilities">Vulnerabilities</a></li>
+      </ul> 
+  </nav> 
+
+<h1>Hacking stuff</h1>
+ 
+<section id="Nmap" class="main-section"> 
+<header>Nmap</header>
+  <p>##Nmap sends SYN packet from the TCP 3-way handshake and waits for SYN-ACK reply but never completes handshake afterwards. used for network reconnaissance, vulnerability assessment, and security auditing. Nmap –6 ##tells to use IPv6 
+<h3> port types:</h3>
+ <ul>
+      <li>Open ports:port where service is actively listening and can be targeted </li> 
+      <li>Filtered ports:Nmap could not determine if they are open or closed. may be behind firewall or have security measures. </li>
+      <li>Closed ports: ports where no service is listening, and they are not a potential attack vector. </li>  
+    </ul> 
+
+
+
+
+<code>
+ sudo nmap [ <Scan Type> ...] [ <Options> ] { <target specification> } 
+</code>
+
+
+<table>
+  <tr>
+    <th>Scan Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>-sS</code></td>
+    <td>Syn Scan: Default when sudo is not used. It sends raw TCP SYN packets and expects SYN/ACK or RST responses. It's stealthy but slower than other scan types.</td>
+  </tr>
+  <tr>
+    <td><code>-sT</code></td>
+    <td>Connect Scan: Works for systems that follow RFC rules (mostly UNIX). It establishes full TCP connections, which makes it more detectable but provides accurate results.</td>
+  </tr>
+  <tr>
+    <td><code>-sN</code></td>
+    <td>Null Scan: Sends TCP packets with no flags set. It relies on the behavior of the target system to determine port status. Effective against some systems but not all.</td>
+  </tr>
+  <tr>
+    <td><code>-sF</code></td>
+    <td>FIN Scan: Sends TCP packets with only the FIN flag set. It relies on the behavior of the target system to determine port status. Effective against some systems but not all.</td>
+  </tr>
+  <tr>
+    <td><code>-sX</code></td>
+    <td>XMAS Scan: Sends TCP packets with the FIN, PSH, and URG flags set. It relies on the behavior of the target system to determine port status. Effective against some systems but not all.</td>
+  </tr>
+  <tr>
+    <td><code>-sU</code></td>
+    <td>UDP Scan: Used to scan UDP ports. It sends UDP packets to target ports and waits for responses. Slower than TCP scans and less reliable due to the connectionless nature of UDP.</td>
+  </tr>
+  <tr>
+    <td><code>-sn</code></td>
+    <td>No Port Scan: Tells Nmap not to scan any ports. It only performs host discovery using ICMP echo packets or ARP requests on a local network.</td>
+  </tr>
+</table>
+
+
+
+</section>
+  
+
+<section id="Metasploit" class="main-section"> 
+<header>Metasploit</header>
+<p>Exploit: piece of code that uses a vulnerability present on the target system</p> 
+
+<p>Vulnerability: flaw of the system in code design or logic flow</p>
+
+<p>Payload: more specific only code that you want to execute on target software </p>
+
+<h4>Basic info:</h4> 
+<ul>
+<li>Location: /opt</li> 
+
+<li>two versions:</li> 
+<ul>  
+<li>Pro costs lot (graphical user interface)</li>  
+<li>Free Open source – works from commapnd line msfconsole(metasploit for console)</li>
+</ul>
+
+
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>start</code></td>
+    <td>Starts Metasploit framework. Stands for "metasploit for console".</td>
+  </tr>
+  <tr>
+    <td><code>msfconsole</code></td>
+    <td>Starts the Metasploit console. Similar to the <code>start</code> command.</td>
+  </tr>
+  <tr>
+    <td><code>show &lt;moduletypename&gt;</code></td>
+    <td>Shows modules of a specific type. For example, <code>show exploits</code> shows all exploits in Metasploit.</td>
+  </tr>
+  <tr>
+    <td><code>search &lt;modulename&gt;</code></td>
+    <td>Finds modules based on keywords. You can search for modules using different criteria.</td>
+  </tr>
+  <tr>
+    <td><code>use /module/name/in/search</code></td>
+    <td>Opens a specific tool/module in Metasploit for use.</td>
+  </tr>
+  <tr>
+    <td><code>close/module</code></td>
+    <td>Closes the currently opened module/tool.</td>
+  </tr>
+  <tr>
+    <td><code>back</code></td>
+    <td>Go back to the previous state, typically when nothing is selected.</td>
+  </tr>
+  <tr>
+    <td><code>Autofill</code></td>
+    <td>Type half of a command and press tab to automatically fill in the rest of the command.</td>
+  </tr>
+</table>
+
+
+</section>
+
+<section id="Denial_of_Service_Attack" class="main-section"> 
+<header>Denial of Service Attack</header> 
+
+<h3>There are 5 main tools to conduct DOS attack</h3>
+    <ol>
+      <li>LOIC (Low Orbit Ion Cannon)</li>
+      <li>HOIC (High Orbit Ion Cannon)</li>
+      <li>HULK denial of service engine</li>
+      <li>ByteDOS newer developed in 2021</li>
+      <li>Pyloris -- HTTP DOS TOOL</li>
+      </ol>
+    
+      <h3>2 Teqnicues for DOS attack</h3>
+    <ol>
+      <li>Slow LORIS</li>
+      <li>Rudy are you dead yet.</li>
+      </ol>
+
+</section>
+
+
+
+<section id="Wireless_Security" class="main-section"> 
+<header>Wireless Security</header>
+<table>
+  <tr>
+    <th>Term</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>SSID</td>
+    <td>Network Name</td>
+  </tr>
+  <tr>
+    <td>ESSID</td>
+    <td>Network name for multiple routers</td>
+  </tr>
+  <tr>
+    <td>BSSID</td>
+    <td>Access point's (router's) MAC address</td>
+  </tr>
+  <tr>
+    <td>WPA2-PSK</td>
+    <td>Normal Wi-Fi where you provide a password</td>
+  </tr>
+  <tr>
+    <td>WPA-EAP</td>
+    <td>Needs Username & Password that is sent to a Radius server. Radius server is a server for authenticating clients not just for Wi-Fi (like in a hotel).</td>
+  </tr>
+</table>
+ <h2>Wi-Fi Configuration</h2>
+
+<p>Just checking Wi-Fi config: <code>iwconfig</code></p>
+
+<p>Aircrack app for cracking</p>
+
+<ul>
+  <li>Installation: <code>sudo apt install aircrack-ng</code></li>
+  <li>Help menu: <code>aircrack-ng --help</code></li>
+  <li>Create new network interface to monitor traffic: <code>sudo airmon-ng start wlan0</code> <em>(New name will be wlan0mon)</em></li>
+</ul>
+
+<p>To start monitoring, you have to kill the following processes:</p>
+
+<ul>
+  <li>874 avahi-daemon: To restart or <code>sudo service avahi-daemon start</code></li>
+  <li>886 NetworkManager: To restart <code>sudo service NetworkManager start</code></li>
+  <li>947 wpa_supplicant: To manually restart <code>sudo systemctl start wpa_supplicant</code></li>
+  <li>968 avahi-daemon: <code>sudo systemctl start avahi-daemon</code></li>
+</ul>
+
+
+ 
+</section>
+
+<section id="Vulnerabilities" class="main-section"> 
+<header>Vulnerabilities</header>
+<h3>OWASP Top 10 Explanations</h3>
+
+<p>The OWASP Top 10 represents the ten most critical web application security risks, providing insights into common vulnerabilities and threats that developers and security professionals need to address.</p>
+
+<ol>
+  <li>
+    <strong>Broken Access Control:</strong>
+    <p>Gaining access to something that you should not have to have.</p>
+  </li>
+  <li>
+    <strong>Insecure Direct Object Reference (IDOR):</strong>
+    <p>When you can change the ID of a web page link and thereby move to different user profiles. The problem arises when the object ID is directly linked to the user, and the system allows access to different users by changing the ID.</p>
+  </li>
+  <li>
+    <strong>Cryptographic Failures:</strong>
+    <p>Not encrypting data in transit, leading to HTTPS man-in-the-middle attacks. Also, having files like emails encrypted so the mail owner cannot read it.</p>
+    <p>To process database files to acquire useful information, you can use SQLite3:</p>
+    <ul>
+      <li><code>SQLite3 &lt;databasename.db&gt;</code> - This will open the database in SQLite format.</li>
+      <li><code>.tables</code> - This will display all the tables available in a database.</li>
+      <li><code>PRAGMA table_info(tablename);</code> - Here, we input the tablename obtained from step 2 to acquire more info on that table.</li>
+      <li><code>SELECT * FROM tablename;</code> - Again, we enter the tablename from step 2 to get all the data/inputs inside the tables.</li>
+    </ul>
+    <p>You can use <a href="https://crackstation.net/">crackstation.net</a> to crack hashes acquired from tables.</p>
+  </li>
+
+  <li>
+    <strong>Injection:</strong>
+    <p>Injection happens when an application interprets user input as commands or parameters. There are two main types:</p>
+    <ul>
+      <li><strong>SQL Injection:</strong> When an attacker can manipulate queries to the database, allowing access, modification, or deletion of information.</li>
+      <li><strong>Command Injection:</strong> When user/attacker input is seen as system commands, typically interacting with the server's console (server CLI) directly.</li>
+    </ul>
+    <p><code>$(whoami)</code> will be interpreted as a console command in very basic situations, due to inline vulnerability.</p>
+    <p>Defense against injection involves ensuring user input is not interpreted as queries or commands by:</p>
+    <ul>
+      <li>Using allow lists: When input is sent to server, it is compared to safe inputs and characters. If input is marked safe, it is processed; otherwise, it is rejected.</li>
+      <li>Stripping input: If input contains dangerous characters, it is removed before processing.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Insecure Design:</strong>
+    <p>Occurs, for example, when there are unlimited password reset attempts possible or when a secure software development cycle is not used, and risks are not properly assessed from the start.</p>
+  </li>
+  <li>
+    <strong>Security Misconfigurations:</strong>
+    <p>These include:</p>
+    <ul>
+      <li>Poorly configured permissions on cloud services, like S3 buckets.</li>
+      <li>Having unnecessary features enabled, like services, pages, accounts, or privileges.</li>
+      <li>Default accounts with unchanged passwords.</li>
+      <li>Error messages that are overly detailed and allow attackers to find out more about the system.</li>
+      <li>Not using HTTP security headers.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Vulnerable and Outdated Components:</strong>
+    <p>Occurs when old versions of apps with known security vulnerabilities are used.</p>
+  </li>
+  <li>
+    <strong>Identification and Authentication Failures:</strong>
+    <p>Three main ways of attack:</p>
+    <ul>
+      <li>Weak authentication: When it is possible to register on a website by having space in front of the name and thereby gaining authorization to a different account.</li>
+      <li>Brute force attacks: If a website allows multiple authentication attempts using passwords and usernames.</li>
+      <li>Websites allowing the use of weak passwords.</li>
+      <li>Weak session cookies: When session cookies contain predictable values, attackers can guess and take over sessions of other users.</li>
+    </ul>
+    <p>The best solution to these issues is for websites to enforce strong passwords, use MFA, and lock out accounts with multiple login attempts.</p>
+  </li>
+  <li>
+    <strong>Software and Data Integrity Failures:</strong>
+    <p>File integrity failures occur when what you download is modified, and you get a forged version on your PC. To verify the integrity of downloaded files, DSA signature verification is used.</p>
+    <p>How to verify data integrity:</p>
+    <ul>
+      <li>Make sure that the file was not tampered with during download. The website should have hashes to compare, so create a hash by:</li>
+      <li><strong>MD5:</strong> <code>md5sum path/to/file</code></li>
+      <li><strong>SHA1:</strong> <code>sha1sum path/to/file</code></li>
+      <li><strong>SHA256:</strong> <code>sha256sum path/to/file</code></li>
+    </ul>
+    <p>Software integrity failures occur when websites use third-party libraries. Instead of directly linking to these libraries, hash the website contents using a link such as <a href="https://www.srihash.org/">SRI Hash</a>.</p>
+    <p>Wrong method:</p>
+    <code>&lt;script src="https://code.jquery.com/jquery-3.6.1.min.js"&gt;&lt;/script&gt;</code>
+    <p>Right method:</p>
+    <code>&lt;script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"&gt;&lt;/script&gt;</code>
+  </li>
+</ol>
+
+ <ol start="10">
+
+<li>
+  <strong>Server-Side Request Forgery (SSRF):</strong>
+  <p>Occurs when a hacker tells the server to forward stuff it receives to them, thereby gaining confidential information.</p>
+  <p>Bullying servers in the middle to send you information.</p>
+  <p>Using Burp Suite proxy, we can intercept outgoing requests and modify them so that instead of sending stuff to another server, it is sent to our own IP address.</p>
+</li>
+</ol>
+
+ 
+</section>
+
+
+
+
+</main> 
+
+
+
+
+<footer> 
+  <address> 
+  Jolo Corporation<br /> 
+  Content on a Webpage is licensed under Commons Attribution 4.0 International license<br /> 
+  </address>  
+  </footer> 
+</body>
+</html> 
+

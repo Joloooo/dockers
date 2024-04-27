@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  joloweb:
+    image: nginx:1.25.5-alpine                                    #image version alpines are significantly smaller size
+    ports:
+      - "8080:80"                                             #pc(port):CONTAINER(port)
+      - "4430:443"                                           #pc(port):CONTAINER(port)
+    volumes:                                                #hard link between docker file and my computer file
+      - ./src:/usr/share/nginx/html                         #pc path: docker path
+    restart: always       
+    networks:                                               #networks configuration of nginxfile
+      jolonetwork:                                          #will be using my defined jolonetwork
+        ipv4_address: 192.168.91.15                         # Assigning specific IPv4 address to the container
+
+
+ #networksing part
+networks:
+  jolonetwork:
+    driver: bridge                                        # Using bridge driver for the parent network
+    ipam:                                                 #stands for ip adress management
+      driver: default
+      config:
+        - subnet: "192.168.91.0/24"                       # Subnet for the parent network
+
+
+
+
+

@@ -1,0 +1,172 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+
+
+  
+  /*navbar*/
+
+    #navbar{
+      position:fixed;  
+      top:0;  
+      left:0;
+      width:100vw;
+  
+      background-color:black;
+      display:flex; 
+      Justify-content: space-evenly;
+      Align-items: center;
+      color:white;
+      Font-weight:bold;
+      font-size:1.5em;
+      
+     
+    }
+    
+    #portfolio_name{
+      text-align:center;
+      font-size:1.5em;
+      }
+    
+    #navbar p a:hover{
+        background-color:white;
+        color:black;  
+        cursor: pointer;
+            
+    }
+        
+    #navbar #links{
+      display:grid;
+      grid-template-columns:repeat(5, minmax( min-content, max-content));
+      column-gap:0.5em;
+      Justify-content: space-between;
+    }
+    
+    #navbar p a{  
+      text-decoration: none; 
+      color:white;
+      Font-weight:bold;
+      padding:0.5em 0;
+    }
+  
+  
+    .pink{
+      background-color:rgba(0,0,0, 40%);
+      text-align:center;
+      margin-bottom:0; 
+      }
+
+
+  body {  
+    margin-top:5em;
+    background-image:url(https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/5%20Best%20Coding%20Programs%20for%20Aspiring%20Programmers1650304687858345.jpg); 
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-attachment:fixed;    
+    color:white;
+    font-size:1.2em;
+    position: center;
+    z-index: -1;
+    
+    } 
+  
+  main{
+    margin-top: 8rem;
+    margin: 0vh 60vh;
+  }
+
+
+  fieldset{
+  background-color:rgba(0,0,0, 65%);
+    border-color:transparent;
+    border-top-width:25px;
+  }
+  
+  #survey-form{
+    padding-bottom:15;
+  
+  }
+  
+  label{
+    display:block;
+    margin: 15px 0;  
+  }
+  
+  
+  
+  button{
+    margin:0 13;
+    width:13em;
+    height:1.5em;
+    font-size:30px;
+    background-color:green
+  }
+  
+   
+  
+  footer{
+    background-color:black;
+    position:relative;
+    bottom:0;
+    left:0;
+    color:white;
+    font-size:1.2em;
+    height: 2em;
+    width:100vw;
+    display:flex;
+    flex-direction: row;
+    align-items: center;    
+    
+    font-weight:bold;
+    padding-left:0.5em;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    body {
+      margin-top: 3em; /* Decrease top margin */
+    }
+  
+    main {
+      margin: 0 5%; /* Adjust main margin */
+    }
+  
+    #navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #navbar p a {
+      padding: 0.5em;
+    }
+  
+    #navbar #links {
+      grid-template-columns: repeat(2, minmax(min-content, max-content));
+    }
+
+
+    /* Adjust font size for smaller screens */
+    #navbar p a,
+    #portfolio_name,
+    footer {
+      font-size: 1.5rem;
+    }
+  .pink{
+    padding-top: 5em;;
+  }
+
+    /* Adjust button size for smaller screens */
+    button {
+      width: 80%; /* Make button full width */
+      font-size: 1em; /* Adjust font size */
+    }
+
+
+    footer{
+      font-size: 0.5em;;
+    }
+  }
